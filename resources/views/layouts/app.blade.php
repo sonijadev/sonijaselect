@@ -27,8 +27,8 @@
             <!-- Page Heading -->
             @if (isset($header))
                 <header class="bg-white dark:bg-gray-800 shadow">
-                    <div class="max-w-2xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
+                    <div class="max-w-2xl py-4 mx-auto sm:px-6 lg:px-8">
+                         {{ $header }}
                     </div>
                 </header>
             @endif
@@ -37,10 +37,25 @@
             <main>
                 {{ $slot }}
             </main>
+
+<footer class="max-w-7xl bg-white lg:p-8 shadow-md mx-auto rounded-md shadow-md text-center mt-6">
+© Copyright {{ date('Y') }}. All rights reserved for Sonija Dev.
+</footer>
         </div>
 
         @stack('modals')
 
         @livewireScripts
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script type="text/javascript" src="//cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+        <link rel="stylesheet" href="//cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+        <script>    
+            var table = new DataTable('#notificationsTable', {
+                language: {
+                    url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/pl.json',
+                },
+                order: [[0, 'asc']],
+            });
+        </script>
     </body>
 </html>

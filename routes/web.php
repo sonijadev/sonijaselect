@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Livewire\NotificationsView;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -30,3 +32,8 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+Route::get('/notifications', NotificationsView::class)
+    ->name('notifications.view')
+    ->middleware('auth:sanctum');
+

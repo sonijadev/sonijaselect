@@ -1,6 +1,6 @@
 <nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
     <!-- Primary Navigation Menu -->
-    <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-2xl mx-auto sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
@@ -13,9 +13,9 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                        {{ __('Panel pracownika') }}
                     </x-nav-link>
-                    <x-nav-link href="{{ route('dashboard') }}">
+                    <x-nav-link href="{{ route('notifications.view') }}" :active="request()->routeIs('notifications.view')">
                         {{ __('Zawiadomienia') }}
                     </x-nav-link>
                     <x-nav-link href="{{ route('dashboard') }}">
@@ -107,17 +107,17 @@
 
                         <x-slot name="content">
                             <!-- Account Management -->
-                            <div class="block px-4 py-2 text-xs text-gray-400">
-                                {{ __('Manage Account') }}
+                            <div class="block px-4 py-4 text-xs text-gray-400">
+                            {{ 'Witaj ' . Auth::user()->name . '!😀'}}
                             </div>
 
                             <x-dropdown-link href="{{ route('profile.show') }}">
-                                {{ __('Profile') }}
+                                {{ __('Ustawienia użytkownika') }}
                             </x-dropdown-link>
 
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                                 <x-dropdown-link href="{{ route('api-tokens.index') }}">
-                                    {{ __('API Tokens') }}
+                                    {{ __('Klucze API') }}
                                 </x-dropdown-link>
                             @endif
 
@@ -129,7 +129,7 @@
 
                                 <x-dropdown-link href="{{ route('logout') }}"
                                          @click.prevent="$root.submit();">
-                                    {{ __('Log Out') }}
+                                    {{ __('Wyloguj się') }}
                                 </x-dropdown-link>
                             </form>
                         </x-slot>
